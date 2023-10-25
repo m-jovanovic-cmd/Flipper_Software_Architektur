@@ -1,5 +1,6 @@
 package components.targets;
 
+import components.Flipper;
 import visitors.FlipperTargetVisitor;
 
 public class Hole extends FlipperTarget {
@@ -19,4 +20,7 @@ public class Hole extends FlipperTarget {
     public int getPointValue() {
         return pointValue;
     }
+
+    @Override
+    public void playEvent() {}
 }

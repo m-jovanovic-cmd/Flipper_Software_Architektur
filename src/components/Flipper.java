@@ -2,24 +2,20 @@ package components;
 
 import state.FlipperState;
 import state.NoCreditState;
-
-import java.util.concurrent.TimeUnit;
+import util.SleepTimer;
 
 public class Flipper {
     private static Flipper instance;
     private FlipperState state;
+    private boolean rampIsExtended;
 
     private int credit = 0;
     private Flipper() {
         this.state = new NoCreditState(this);
+        this.rampIsExtended = false;
         System.out.printf("Spiel startet");
         for(int i = 0; i < 3; i++) {
-            try {
-                System.out.printf(".");
-                TimeUnit.SECONDS.sleep(1);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+            SleepTimer.writeAndSleep(1, ".");
         }
         System.out.printf("\nWerfen Sie eine Münze ein mit 'insert'.\n");
     };
@@ -50,6 +46,14 @@ public class Flipper {
 
     public void setCredit(int credit) {
         this.credit = credit;
+    }
+
+    public boolean isRampIsExtended() {
+        return rampIsExtended;
+    }
+
+    public void setRampIsExtended(boolean rampIsExtended) {
+        this.rampIsExtended = rampIsExtended;
     }
 
     public void addOneCredit() {

@@ -19,4 +19,7 @@ public class Bumper extends FlipperTarget {
     public int getPointValue() {
         return pointValue;
     }
+
+    @Override
+    public void playEvent() {}
 }
